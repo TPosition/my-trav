@@ -1,0 +1,37 @@
+<v-container fill-height>
+    <v-layout align-center justify-center>
+        <v-flex class="login-form text-xs-center">
+            <div class="display-1 mb-3 text-center">
+                <v-icon class="mr-2" large="large">mdi-map-marker</v-icon> MyWorkspace
+            </div>
+            <v-card light>
+                <v-card-text>
+                    <div class="subheading text-center">Log in to your customer
+                        portal</div>
+
+                    <div v-if="validationErrors.length" class="notification is-danger is-light">
+                        <div class="content">
+                            Please resolve the following error(s) before proceeding.
+                            <ul style="margin-top:0.3em; margin-left: 1em">
+                                <li v-for="(error, index) in validationErrors" :key="`error-${index}`" v-html="error" />
+                            </ul>
+                        </div>
+                    </div>
+                    <v-form>
+                        <v-text-field v-model="email" light prepend-icon="mdi-map-marker" label="Email" type="email">
+                        </v-text-field>
+                        <v-text-field v-model="password" light prepend-icon="mdi-map-marker" label="Password"
+                            type="password">
+                        </v-text-field>
+                        <v-text-field v-model="passwordRepeat" light prepend-icon="mdi-map-marker"
+                            label="Confirm Password" type="password">
+                        </v-text-field>
+                        <v-btn block type="submit" @click.prevent="validate()">Sign in</v-btn>
+                    </v-form>
+                </v-card-text>
+            </v-card>
+            <div class=" text-center mt-5">Don't have an account?<v-btn class="ml-4" light>Sign up</v-btn>
+            </div>
+        </v-flex>
+    </v-layout>
+</v-container>
