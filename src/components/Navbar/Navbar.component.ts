@@ -20,11 +20,11 @@ export default class NavbarComponent extends Vue {
     };
   }
 
-  mounted() {
-    if (!this.IS_LOGGED_IN) {
-      this.$router.push({ name: "Login" });
-    }
-  }
+  // mounted() {
+  //   if (!this.IS_LOGGED_IN) {
+  //     this.$router.push({ name: "Login" });
+  //   }
+  // }
 
   private logout() {
     this.signOut().then(() => {

@@ -1,22 +1,30 @@
 <div class="home">
-    <div class="navbar-end">
-        <a href="" class="navbar-item" @click.prevent="logout">
-            Sign Out
-        </a>
-    </div>
-    <div class="hero-image">
-        <div class="hero-text">
-            <p class="h1" id="banner-text">Hello,</p>
 
-        </div>
-    </div>
-
+    <v-carousel cycle height="400" hide-delimiter-background show-arrows-on-hover>
+        <v-carousel-item v-for="(carousel,i) in carousels" :key="i" :src="carousel.src"
+            reverse-transition="fade-transition" transition="fade-transition">
+            <v-container fill-height>
+                <v-row class="mx-auto">
+                    <v-col class="text-center">
+                        <span>
+                            <p class="display-3">Animation line 1</p>
+                        </span>
+                        <br>
+                        <span>
+                            <p class="display-1">Animation line 2</p>
+                        </span>
+                        <br>
+                    </v-col>
+                </v-row>
+            </v-container>
+        </v-carousel-item>
+    </v-carousel>
     <div class="container my-5">
-        <p class="h2 fw-bold">5 places I want to go after MCO</p>
+        <p class="text-h4 font-weight-bold">Top Destinations</p>
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-lg pb-3">
+            <div v-for="(card,i) in cards" class="col-xs-12 col-sm-12 col-lg pb-3">
                 <div class="card">
-                    <img class="card-img-top" src="images/geroge-town.jpg">
+                    <!-- <img class="card-img-top" :src="card.src"> -->
                     <div class="card-body">
                         <h5 class="card-title">George Town</h5>
                         <p class="card-text">George Town is the colorful, multicultural capital of the Malaysian island
@@ -24,46 +32,33 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-xs-12 col-sm-12 col-lg pb-3">
-                <div class="card">
-                    <img class="card-img-top" src="images/langkawi.jpg">
-                    <div class="card-body">
-                        <h5 class="card-title">Langkawi</h5>
-                        <p class="card-text">Langkawi, officially known as Langkawi, the Jewel of Kedah, is a district
-                            and an archipelago of 99 islands in the Malacca Strait. </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-lg pb-3">
-                <div class="card">
-                    <img class="card-img-top" src="images/petronas-towers.jpg">
-                    <div class="card-body">
-                        <h5 class="card-title">Petronas Twin Towers</h5>
-                        <p class="card-text">The Petronas Towers, or the Petronas Twin Towers, are twin skyscrapers in
-                            Kuala Lumpur, Malaysia.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-lg pb-3">
-                <div class="card">
-                    <img class="card-img-top" src="images/tokyo-skytree.jpg">
-                    <div class="card-body">
-                        <h5 class="card-title">Tokyo Skytree</h5>
-                        <p class="card-text">Tokyo Skytree is a broadcasting and observation tower in Sumida, Tokyo.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-lg pb-3">
-                <div class="card">
-                    <img class="card-img-top" src="images/n-seoul-tower.jpg">
-                    <div class="card-body">
-                        <h5 class="card-title">N Seoul Tower</h5>
-                        <p class="card-text">N Seoul Tower is a communication and observation tower located on Namsan
-                            Mountain in central Seoul, South Korea. </p>
-                    </div>
-                </div>
-            </div>
         </div>
+
+        <v-sheet class="mx-auto" elevation="8">
+            <v-slide-group v-model="selectedCards" class="pa-4" multiple v-if>
+                <v-slide-item v-for="card,n in cards" :key="n" v-slot="{ active, toggle }">
+                    <v-card :color="active ? 'primary' : 'grey lighten-1'" class="ma-4" width="264" @click="toggle"
+                        min-height="340px">
+                        <div v-if="!active">
+                            <v-img height="200" :src="card.src"></v-img>
+                            <v-card-title>{{card.title}}</v-card-title>
+                            <v-card-text>
+                                <div>{{card.content}}</div>
+                            </v-card-text>
+                        </div>
+                        <v-row v-if="active" class="fill-height" align="center" justify="center">
+                            <v-scale-transition>
+                                <v-icon color="white" size="48" v-text="'mdi-close-circle-outline'">
+                                </v-icon>
+                            </v-scale-transition>
+                        </v-row>
+                    </v-card>
+                </v-slide-item>
+                <h3 class="text-h6">
+                    Selected {{ selectedCards }}
+                </h3>
+            </v-slide-group>
+        </v-sheet>
+        <v-btn @click.prevent="checkout"></v-btn>
     </div>
 </div>
