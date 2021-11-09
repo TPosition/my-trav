@@ -8,8 +8,6 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 
-Vue.config.productionTip = false;
-
 const firebaseConfig = {
   apiKey: "AIzaSyAvonrOS8G4RNGgZ2UrojYH0yd8KHujS74",
   authDomain: "buw3333.firebaseapp.com",

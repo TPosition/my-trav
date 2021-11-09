@@ -21,24 +21,12 @@
     </v-carousel>
     <div class="container my-5">
         <p class="text-h4 font-weight-bold">Top Destinations</p>
-        <div class="row">
-            <div v-for="(card,i) in cards" class="col-xs-12 col-sm-12 col-lg pb-3">
-                <div class="card">
-                    <!-- <img class="card-img-top" :src="card.src"> -->
-                    <div class="card-body">
-                        <h5 class="card-title">George Town</h5>
-                        <p class="card-text">George Town is the colorful, multicultural capital of the Malaysian island
-                            of Penang.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <v-sheet class="mx-auto" elevation="8">
             <v-slide-group v-model="selectedCards" class="pa-4" multiple v-if>
                 <v-slide-item v-for="card,n in cards" :key="n" v-slot="{ active, toggle }">
-                    <v-card :color="active ? 'primary' : 'grey lighten-1'" class="ma-4" width="264" @click="toggle"
-                        min-height="340px">
+                    <v-card :color="active ? 'primary' : 'grey lighten-1'" class="ma-4" width="264" @click="toggle(); updateCart();
+                    updateAmount();" min-height="340px">
                         <div v-if="!active">
                             <v-img height="200" :src="card.src"></v-img>
                             <v-card-title>{{card.title}}</v-card-title>
@@ -59,6 +47,7 @@
                 </h3>
             </v-slide-group>
         </v-sheet>
-        <v-btn @click.prevent="checkout"></v-btn>
+        <CheckoutBtn :amount="amount" v-if="amount" :email="user.email" @paymentSuccessEvent="paymentSuccessEvent"
+            :key="amount" />
     </div>
 </div>
