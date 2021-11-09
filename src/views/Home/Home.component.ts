@@ -99,5 +99,6 @@ export default class HomeComponent extends Vue {
 
   private paymentSuccessEvent() {
     this.checkout();
+    this.$router.push({ name: "History" });
   }
 }

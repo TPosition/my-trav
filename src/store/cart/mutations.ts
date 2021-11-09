@@ -34,16 +34,23 @@ const mutations: MutationTree<State> = {
     resetCart(state);
   },
   [Mutations.UPDATE_HISTORY](state: State, mutation) {
-    console.log(mutation.cart);
     resetHistory(state);
+
     if (mutation.cart) {
-      for (const key in mutation.cart) {
+      const ordered = Object.keys(mutation.cart)
+        .sort()
+        .reverse()
+        .reduce((obj, key) => {
+          obj[key] = mutation.cart[key];
+          return obj;
+        }, {});
+
+      for (const key in ordered) {
         state.history.push({
-          timestamp: mutation.cart[key].timestamp,
-          items: { ...mutation.cart[key].items },
+          timestamp: ordered[key].timestamp,
+          items: { ...ordered[key].items },
         });
       }
-      console.log(state);
     }
   },
 };

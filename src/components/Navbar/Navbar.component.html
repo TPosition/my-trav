@@ -11,26 +11,26 @@
     style="text-decoration: none; color: inherit;">
     <v-btn elevation="0">
       <v-icon>mdi-{{item.icon}}</v-icon>
-      <strong v-show="$vuetify.breakpoint.md"> {{ item.name }}</strong>
+      <strong class="hidden-sm-and-down"> {{ item.name }}</strong>
     </v-btn>
   </router-link>
   <router-link v-if="IS_LOGGED_IN && this.$route.name!=='History'" to="/history"
     style="text-decoration: none; color: inherit;">
     <v-btn elevation="0">
       <v-icon>mdi-cart</v-icon>
-      <strong v-show="$vuetify.breakpoint.md"> History</strong>
+      <strong class="hidden-sm-and-down"> History</strong>
     </v-btn>
   </router-link>
   <router-link v-if="IS_LOGGED_IN && this.$route.name==='History'" to="/home"
     style="text-decoration: none; color: inherit;">
     <v-btn elevation="0">
       <v-icon>mdi-home</v-icon>
-      <strong v-show="$vuetify.breakpoint.md"> Home</strong>
+      <strong class="hidden-sm-and-down"> Home</strong>
     </v-btn>
   </router-link>
   <v-btn v-if="IS_LOGGED_IN" @click.prevent="logout" elevation="0">
     <v-icon>mdi-exit-to-app</v-icon>
-    <strong v-show="$vuetify.breakpoint.md"> Logout</strong>
+    <strong class="hidden-sm-and-down"> Logout</strong>
   </v-btn>
   </v-menu>
   </nav>

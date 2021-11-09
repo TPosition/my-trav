@@ -47,8 +47,6 @@ const actions: ActionTree<State, any> = {
       .doc(uid)
       .get()
       .then((documentSnapshot) => {
-        console.log("documentSnapshot.data");
-        console.log(documentSnapshot.data());
         context.commit({
           type: Mutations.UPDATE_HISTORY,
           ...documentSnapshot.data(),
