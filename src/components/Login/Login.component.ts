@@ -8,15 +8,17 @@ export default class LoginComponent extends Vue {
   private email = "";
   private password = "";
   private validationErrors: Array<string> = [];
+  private isLoading = false;
+  private signinFailure = false;
 
   @Action(AuthActions.SIGN_IN_WITH_EMAIL_AND_PASSWORD)
   private signInWithEmailAndPassword;
 
-  resetError() {
+  private resetError() {
     this.validationErrors = [];
   }
 
-  validate() {
+  private validate() {
     this.resetError();
     if (this.email === "") {
       this.validationErrors.push("<strong>E-mail</strong> cannot be empty.");
@@ -37,9 +39,20 @@ export default class LoginComponent extends Vue {
     }
   }
 
-  signIn() {
-    this.signInWithEmailAndPassword(this.$data).then(() => {
-      this.$router.push({ name: "Home" });
-    });
+  private signIn() {
+    this.isLoading = true;
+    this.signInWithEmailAndPassword(this.$data)
+      .then(() => {
+        this.isLoading = false;
+        this.$router.push({ name: "Home" });
+      })
+      .catch(() => {
+        this.isLoading = false;
+        this.signinFailure = true;
+      });
+  }
+
+  private pushRegister() {
+    this.$router.push({ name: "Register" });
   }
 }

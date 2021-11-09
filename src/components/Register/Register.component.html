@@ -2,13 +2,15 @@
     <v-layout align-center justify-center>
         <v-flex class="login-form text-xs-center">
             <div class="display-1 mb-3 text-center">
-                <v-icon class="mr-2" large="large">mdi-map-marker</v-icon> MyWorkspace
+                <img style="max-width: 50px;" src="@/assets/logo-sm.png"></img>
+                <p class="text-logo"> Dovey Travel</p>
             </div>
             <v-card light>
                 <v-card-text>
-                    <div class="subheading text-center">Log in to your customer
-                        portal</div>
-
+                    <div class="subheading text-center">Where the journey begins!</div>
+                    <v-alert type="error" v-show="signinFailure">
+                        The email has been used.
+                    </v-alert>
                     <div v-if="validationErrors.length" class="notification is-danger is-light">
                         <div class="content">
                             Please resolve the following error(s) before proceeding.
@@ -18,19 +20,21 @@
                         </div>
                     </div>
                     <v-form>
-                        <v-text-field v-model="email" light prepend-icon="mdi-map-marker" label="Email" type="email">
+                        <v-text-field v-model="email" light prepend-icon="mdi-email" label="Email" type="email">
                         </v-text-field>
-                        <v-text-field v-model="password" light prepend-icon="mdi-map-marker" label="Password"
-                            type="password">
+                        <v-text-field v-model="password" light prepend-icon="mdi-lock" label="Password" type="password">
                         </v-text-field>
-                        <v-text-field v-model="passwordRepeat" light prepend-icon="mdi-map-marker"
+                        <v-text-field v-model="passwordRepeat" light prepend-icon="mdi-lock-reset"
                             label="Confirm Password" type="password">
                         </v-text-field>
-                        <v-btn block type="submit" @click.prevent="validate">Sign in</v-btn>
+                        <v-btn block color="secondary" :disabled="isLoading" type="submit" @click.prevent="validate">
+                            Sign up</v-btn>
                     </v-form>
                 </v-card-text>
             </v-card>
-            <div class=" text-center mt-5">Don't have an account?<v-btn class="ml-4" light>Sign up</v-btn>
+            <div class=" text-center mt-5" @click="pushLogin">Already have an account?<v-btn color="secondary"
+                    class="ml-4" light>Log in
+                </v-btn>
             </div>
         </v-flex>
     </v-layout>

@@ -7,6 +7,7 @@ import vuetify from "./plugins/vuetify";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
+import "@/assets/global.css";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAvonrOS8G4RNGgZ2UrojYH0yd8KHujS74",
