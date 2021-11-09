@@ -10,6 +10,7 @@ export enum Actions {
   UPDATE_CART = "update_cart",
   CHECKOUT = "checkout",
   RESET_CART = "reset_cart",
+  UPDATE_HISTORY = "update_history",
 }
 
 const actions: ActionTree<State, any> = {
@@ -38,6 +39,21 @@ const actions: ActionTree<State, any> = {
     return context.commit({
       type: Mutations.RESET_CART,
     });
+  },
+  [Actions.UPDATE_HISTORY](context, { uid }) {
+    return firebase
+      .firestore()
+      .collection("users")
+      .doc(uid)
+      .get()
+      .then((documentSnapshot) => {
+        console.log("documentSnapshot.data");
+        console.log(documentSnapshot.data());
+        context.commit({
+          type: Mutations.UPDATE_HISTORY,
+          ...documentSnapshot.data(),
+        });
+      });
   },
 };
 

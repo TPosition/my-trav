@@ -1,5 +1,5 @@
 <template>
-  <v-btn id="rzp-button1">Pay {{ amount }} {{ email }}</v-btn>
+  <v-btn block id="rzp-button1">PAY {{ amount }} & CHECKOUT</v-btn>
 </template>
 <script src=""></script>
 

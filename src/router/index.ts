@@ -3,6 +3,7 @@ import VueRouter, { RouteConfig } from "vue-router";
 import Login from "@/components/Login/Login.component.vue";
 import Register from "@/components/Register/Register.component.vue";
 import Home from "@/views/Home/Home.component.vue";
+import History from "@/views/History/History.component.vue";
 
 Vue.use(VueRouter);
 
@@ -22,6 +23,11 @@ const routes: Array<RouteConfig> = [
     path: "/home",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "/history",
+    name: "History",
+    component: History,
   },
 ];
 

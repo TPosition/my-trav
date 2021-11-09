@@ -7,10 +7,22 @@ export interface Item {
 
 export interface State {
   cart: Array<Item>;
+  history: [
+    {
+      items: any;
+      timestamp: string;
+    }
+  ];
 }
 
 export const baseState: State = {
   cart: [],
+  history: [
+    {
+      items: {},
+      timestamp: "",
+    },
+  ],
 };
 
 export default { ...baseState };
