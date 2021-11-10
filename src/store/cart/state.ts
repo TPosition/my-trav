@@ -3,6 +3,9 @@ export interface Item {
   content: string;
   price: string;
   src: string;
+  rating: number;
+  location: string;
+  vote: string;
 }
 
 export interface State {

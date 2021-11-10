@@ -21,6 +21,9 @@ const actions: ActionTree<State, any> = {
       content: item.content,
       price: item.price,
       src: item.src,
+      rating: item.rating,
+      vote: item.vote,
+      location: item.location,
     });
   },
   [Actions.CHECKOUT](context, { uid, data }) {

@@ -27,6 +27,9 @@ const mutations: MutationTree<State> = {
       content: mutation.content,
       price: mutation.price,
       src: mutation.src,
+      location: mutation.location,
+      rating: mutation.rating,
+      vote: mutation.vote,
     } as Item;
     state.cart.push(item);
   },
