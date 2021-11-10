@@ -5,13 +5,13 @@
             reverse-transition="fade-transition" transition="fade-transition">
             <v-container fill-height>
                 <v-row class="mx-auto">
-                    <v-col class="text-center">
+                    <v-col class="text-center" :class="carousel.color">
                         <span>
-                            <p class="display-3">Animation line 1</p>
+                            <p class="display-3 font-weight-bold">{{carousel.line_1}}</p>
                         </span>
                         <br>
                         <span>
-                            <p class="display-1">Animation line 2</p>
+                            <p class="display-1">{{carousel.line_2}}</p>
                         </span>
                         <br>
                     </v-col>
@@ -31,7 +31,61 @@
                             <v-img height="200" :src="card.src"></v-img>
                             <v-card-title>{{card.title}}</v-card-title>
                             <v-card-text>
+                                <v-row align="center" class="mx-0">
+                                    <v-rating :value="card.rating" color="amber" dense half-increments readonly
+                                        size="14">
+                                    </v-rating>
+                                    <div class="grey--text ms-4">
+                                        {{card.rating}} ({{card.vote}})
+                                    </div>
+                                </v-row>
+                                <div class="my-4 text-subtitle-1">
+                                    <v-icon>mdi-earth</v-icon> • {{card.location}}
+                                </div>
                                 <div>{{card.content}}</div>
+                                <v-divider class="mx-4 my-4"></v-divider>
+                                <v-row class="fill-height" align="center" justify="center">
+                                    <p class="font-weight-bold my-2 text-h5">RM {{card.price}}</p> /pax
+                                </v-row>
+                            </v-card-text>
+                        </div>
+                        <v-row v-if="active" class="fill-height" align="center" justify="center">
+                            <v-scale-transition>
+                                <v-icon color="white" size="48" v-text="'mdi-close-circle-outline'">
+                                </v-icon>
+                            </v-scale-transition>
+                        </v-row>
+                    </v-card>
+                </v-slide-item>
+            </v-slide-group>
+        </v-sheet>
+        <div class="pa-4"></div>
+        <p class="text-h4 font-weight-bold">To The World</p>
+        <v-sheet class="mx-auto" elevation="8">
+            <v-slide-group v-model="selectedForeignCards" class="pa-4" multiple v-if>
+                <v-slide-item v-for="card,n in foreignCards" :key="n" v-slot="{ active, toggle }">
+                    <v-card :color="active ? '#3662D8' : 'lighten-1'" class="ma-4" width="264" @click="toggle(); updateCart();
+                    updateAmount();" min-height="340px">
+                        <div v-if="!active">
+                            <v-img height="200" :src="card.src"></v-img>
+                            <v-card-title>{{card.title}}</v-card-title>
+                            <v-card-text>
+                                <v-row align="center" class="mx-0">
+                                    <v-rating :value="card.rating" color="amber" dense half-increments readonly
+                                        size="14">
+                                    </v-rating>
+                                    <div class="grey--text ms-4">
+                                        {{card.rating}} ({{card.vote}})
+                                    </div>
+                                </v-row>
+                                <div class="my-4 text-subtitle-1">
+                                    <v-icon>mdi-earth</v-icon> • {{card.location}}
+                                </div>
+                                <div>{{card.content}}</div>
+                                <v-divider class="mx-4 my-4"></v-divider>
+                                <v-row class="fill-height" align="center" justify="center">
+                                    <p class="font-weight-bold my-2 text-h5">RM {{card.price}}</p> /pax
+                                </v-row>
                             </v-card-text>
                         </div>
                         <v-row v-if="active" class="fill-height" align="center" justify="center">
