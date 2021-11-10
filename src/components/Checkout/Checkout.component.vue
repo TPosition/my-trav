@@ -18,11 +18,12 @@ export default {
     const vm = this;
     var options = {
       key: "rzp_test_TcoZBdZe3W3Ltz",
+      callback_url: "https://my-trav.vercel.app/history",
+      redirect: true,
       amount: this.amount * 100,
       currency: "MYR",
       name: "My Trav Package",
       description: "Payment Gateway",
-
       prefill: {
         email: this.email,
         contact: "+60",

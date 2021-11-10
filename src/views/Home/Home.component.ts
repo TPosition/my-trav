@@ -126,14 +126,13 @@ export default class HomeComponent extends Vue {
       carousels: [
         {
           color: "white--text",
-          line_1: "If you're not barefoot, then you're overdressed.",
+          line_1: "You are not overdressed with barefoot.",
           line_2: "Traveling is the spice of life.",
           src: require("@/assets/images/banner2.jpg"),
         },
         {
           color: "white--text",
-          line_1:
-            "There's nothing like a beautiful sunset to end a healthy day.",
+          line_1: "There's a beautiful sunset to end a healthy day.",
           line_2: "Take a trip now!",
           src: require("@/assets/images/banner1.jpg"),
         },

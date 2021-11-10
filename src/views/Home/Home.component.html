@@ -7,11 +7,15 @@
                 <v-row class="mx-auto">
                     <v-col class="text-center" :class="carousel.color">
                         <span>
-                            <p class="display-3 font-weight-bold">{{carousel.line_1}}</p>
+                            <p :class="{'display-1': $vuetify.breakpoint.smAndDown, 'display-3': $vuetify.breakpoint.mdAndUp}"
+                                class=" font-weight-bold">
+                                {{carousel.line_1}}</p>
                         </span>
                         <br>
                         <span>
-                            <p class="display-1">{{carousel.line_2}}</p>
+                            <p
+                                :class="{'subheading': $vuetify.breakpoint.smAndDown, 'display-1': $vuetify.breakpoint.mdAndUp}">
+                                {{carousel.line_2}}</p>
                         </span>
                         <br>
                     </v-col>
