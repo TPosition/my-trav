@@ -16,6 +16,7 @@ export default class HistoryComponent extends Vue {
   private readonly history;
 
   mounted() {
+    window.scrollTo(0, 0);
     this.updateHistory({ uid: this.user.uid });
   }
 
