@@ -1,5 +1,7 @@
 # my-trav
 
+Vue 2 + Vuex + Vuetify 3 + Firebase + Razorpay
+
 ## Project setup
 ```
 npm install
