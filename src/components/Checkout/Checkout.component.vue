@@ -18,8 +18,6 @@ export default {
     const vm = this;
     var options = {
       key: "rzp_test_TcoZBdZe3W3Ltz",
-      callback_url: "https://my-trav.vercel.app/history",
-      redirect: true,
       amount: this.amount * 100,
       currency: "MYR",
       name: "My Trav Package",
@@ -33,10 +31,12 @@ export default {
       },
     };
     options.handler = function (response) {
+      PaymentInterface.success();
       vm.paymentSuccessEvent();
     };
     var rzp1 = new Razorpay(options);
     rzp1.on("payment.failed", function (response) {
+      PaymentInterface.error();
       alert("Payment failed, please try again.");
     });
 
