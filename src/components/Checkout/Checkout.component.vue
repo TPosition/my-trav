@@ -31,12 +31,10 @@ export default {
       },
     };
     options.handler = function (response) {
-      PaymentInterface.success();
       vm.paymentSuccessEvent();
     };
     var rzp1 = new Razorpay(options);
     rzp1.on("payment.failed", function (response) {
-      PaymentInterface.error();
       alert("Payment failed, please try again.");
     });
 

@@ -186,7 +186,6 @@ export default class HomeComponent extends Vue {
       (val) => this.foreignCards[val]
     );
     addForeignItems.map((val) => this.addToCart(val));
-    console.log(this.cartItem);
   }
 
   private updateAmount() {
